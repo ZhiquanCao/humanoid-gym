@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by converting from step_6_dof mujoco file -->
+<robot name="STEP_6_dof">
+  <material name="black">
+    <color rgba="0.1 0.1 0.1 1"/>
+  </material>
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/link00.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="../meshes/link00.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <!-- Left leg -->
+  <joint name="left_hip_roll" type="revolute">
+    <parent link="base_link"/>
+    <child link="left_hip_roll_link"/>
+    <origin xyz="-0.09 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-0.05" upper="0.05" effort="8" velocity="10"/>
+  </joint>
+  <link name="left_hip_roll_link">
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/link1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="left_hip_pitch" type="revolute">
+    <parent link="left_hip_roll_link"/>
+    <child link="left_hip_pitch_link"/>
+    <origin xyz="-0.08 0.05 0.0"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-0.93" upper="0.93" effort="8" velocity="10"/>
+  </joint>
+  <link name="left_hip_pitch_link">
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/link2.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="left_knee_pitch" type="revolute">
+    <parent link="left_hip_pitch_link"/>
+    <child link="left_knee_pitch_link"/>
+    <origin xyz="-0.07 0.05 -0.27"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-0.93" upper="0.93" effort="8" velocity="10"/>
+  </joint>
+  <link name="left_knee_pitch_link">
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/link3.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="left_ankle_pitch" type="revolute">
+    <parent link="left_knee_pitch_link"/>
+    <child link="left_ankle_pitch_link"/>
+    <origin xyz="-0.082 0.05 -0.535"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-0.23" upper="0.23" effort="8" velocity="10"/>
+  </joint>
+  <link name="left_ankle_pitch_link">
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/link4.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  
+  <!-- Right leg -->
+  <joint name="right_hip_roll" type="revolute">
+    <parent link="base_link"/>
+    <child link="right_hip_roll_link"/>
+    <origin xyz="0.09 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-0.05" upper="0.05" effort="8" velocity="10"/>
+  </joint>
+  <link name="right_hip_roll_link">
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/link1_m.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="right_hip_pitch" type="revolute">
+    <parent link="right_hip_roll_link"/>
+    <child link="right_hip_pitch_link"/>
+    <origin xyz="0.08 0.05 0.0"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-0.93" upper="0.93" effort="8" velocity="10"/>
+  </joint>
+  <link name="right_hip_pitch_link">
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/link2_m.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="right_knee_pitch" type="revolute">
+    <parent link="right_hip_pitch_link"/>
+    <child link="right_knee_pitch_link"/>
+    <origin xyz="0.07 0.05 -0.27"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-0.93" upper="0.93" effort="8" velocity="10"/>
+  </joint>
+  <link name="right_knee_pitch_link">
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/link3_m.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="right_ankle_pitch" type="revolute">
+    <parent link="right_knee_pitch_link"/>
+    <child link="right_ankle_pitch_link"/>
+    <origin xyz="-0.082 0.05 -0.535"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-0.23" upper="0.23" effort="8" velocity="10"/>
+  </joint>
+  <link name="right_ankle_pitch_link">
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/link4.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+</robot>
