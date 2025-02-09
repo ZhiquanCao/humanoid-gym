@@ -8,7 +8,7 @@
   <option timestep="0.002" gravity="0 0 0"/>
 
 
-  <statistic meansize="0.05"/>
+  <!-- <statistic meansize="0.05"/> -->
   <default>
     <default class="step6">
       <joint damping="1" armature="0.1"/>
@@ -45,46 +45,46 @@
       <geom type="mesh"  mesh="link00" class="collision" euler="0 0 1.57079"/>
       <geom type="mesh"   class="visual" mesh="link00"  euler="0 0 1.57079"/>
       <body>
-        <body>
-        <joint name="left_hip_roll" pos="-0.09 0 0 " axis="0 1 0" range="-0.05 0.05"/>
-        <geom  pos="-0.09 0 0.0" type="mesh"  mesh="link1" class="collision"  euler="1.57079 0 0"/>
-        <geom  pos="-0.09 0 0.0" class="visual" mesh="link1"   euler="1.57079 0 0" />
-        <body>
-          <joint name="left_hip_pitch" pos="-0.08 0.05 0.0" axis="1 0 0" range="-0.93 0.93"/>
-          <geom  pos="-0.075 0.05 0.0" type="mesh"  mesh="link2" class="collision"  euler="1.57079 0 0"/>
-          <geom  pos="-0.075 0.05 0.0" class="visual" mesh="link2"   euler="1.57079 0 0" /> 
-          <body>
-            <joint name="left_knee_pitch"  pos="-0.07 0.05 -0.27" axis="1 0 0" range="-0.93 0.93"/>
-            <geom  pos="-0.07 0.05 -0.27" type="mesh"  mesh="link3" class="collision"  euler="1.57079 0 0"/>
-            <geom  pos="-0.07 0.05 -0.27" class="visual" mesh="link3"   euler="1.57079 0 0" /> 
-            <body>
-              <joint name="left_ankle_pitch"  pos="-0.082 0.05 -0.535" axis="1 0 0" range="-0.23 0.23"/>
-              <geom  pos="-0.082 0.05 -0.535" type="mesh"  mesh="link4" class="collision"  euler="1.57079 0 0"/>
-              <geom  pos="-0.082 0.05 -0.535" class="visual" mesh="link4"   euler="1.57079 0 0" />               
-            </body>            
-          </body>         
+        <body name="left_hip_roll_link" pos="-0.09 0 0">
+          <joint name="left_hip_roll" pos="0 0 0" axis="0 1 0" range="-0.05 0.05"/>
+          <geom  pos="0 0 0" type="mesh"  mesh="link1" class="collision"  euler="1.57079 0 0"/>
+          <geom  pos="0 0 0" class="visual" mesh="link1"   euler="1.57079 0 0" />
+          <body name="left_hip_pitch_link" pos="0.01 0.05 0.0"> <!-- pos="-0.08 0.05 0.0"-->
+            <joint name="left_hip_pitch" axis="1 0 0" range="-0.93 0.93"/>
+            <geom  pos="0.005 0 0" type="mesh"  mesh="link2" class="collision"  euler="1.57079 0 0"/>
+            <geom  pos="0.005 0 0" class="visual" mesh="link2"   euler="1.57079 0 0" /> 
+            <body name="left_knee_pitch_link" pos="0.01 0.0 -0.27"> <!-- pos="-0.07 0.05 -0.27" -->
+              <joint name="left_knee_pitch"  pos="0 0 0" axis="1 0 0" range="-0.93 0.93"/>
+              <geom  pos="0 0 0" type="mesh"  mesh="link3" class="collision"  euler="1.57079 0 0"/>
+              <geom  pos="0 0 0" class="visual" mesh="link3"   euler="1.57079 0 0" /> 
+              <body name="left_ankle_pitch_link" pos="-0.012 0.0 -0.265"> <!-- pos="-0.082 0.05 -0.535" -->
+                <joint name="left_ankle_pitch"  pos="0 0 0" axis="1 0 0" range="-0.23 0.23"/>
+                <geom  pos="0 0 0" type="mesh"  mesh="link4" class="collision"  euler="1.57079 0 0"/>
+                <geom  pos="0 0 0" class="visual" mesh="link4"   euler="1.57079 0 0" />               
+              </body>            
+            </body>         
+          </body>
         </body>
-        </body>
-        <body>
-        <joint name="right_hip_roll" pos="0.09 0 0 " axis="0 1 0" range="-0.05 0.05"/>
-        <geom  pos="+0.09 0 0.0" type="mesh"  mesh="link1_m" class="collision"  euler="1.57079  0 0" />
-        <geom  pos="+0.09 0 0.0" class="visual" mesh="link1_m" euler="1.57079  0 0"/>
-        <body>
-          <joint name="right_hip_pitch" pos="0.08 0.05 0.0" axis="1 0 0" range="-0.93 0.93"/>
-          <geom  pos="0.075 0.05 0.0" type="mesh"  mesh="link2_m" class="collision"  euler="1.57079 0 0"/>
-          <geom  pos="0.075 0.05 0.0" class="visual" mesh="link2_m"   euler="1.57079 0 0" /> 
-          <body>
-            <joint name="right_knee_pitch"  pos="0.07 0.05 -0.27" axis="1 0 0" range="-0.93 0.93"/>
-            <geom  pos="0.07 0.05 -0.27" type="mesh"  mesh="link3_m" class="collision"  euler="1.57079 0 0"/>
-            <geom  pos="0.07 0.05 -0.27" class="visual" mesh="link3_m"   euler="1.57079 0 0" /> 
-            <body>
-              <joint name="right_ankle_pitch"  pos="0.082 0.05 -0.535" axis="1 0 0" range="-0.23 0.23"/>
-              <geom  pos="0.082 0.05 -0.535" type="mesh"  mesh="link4_m" class="collision"  euler="1.57079 0 0"/>
-              <geom  pos="0.082 0.05 -0.535" class="visual" mesh="link4_m"   euler="1.57079 0 0" />               
-            </body>            
-          </body>          
-        </body>
-        </body>
+          <body name="right_hip_roll_link" pos="0.09 0 0"> 
+            <joint name="right_hip_roll" pos="0 0 0" axis="0 1 0" range="-0.05 0.05"/>
+            <geom  pos="0 0 0" type="mesh"  mesh="link1_m" class="collision"  euler="1.57079  0 0" />
+            <geom  pos="0 0 0" class="visual" mesh="link1_m" euler="1.57079  0 0"/>
+            <body name="right_hip_pitch_link" pos="-0.01 0.05 0.0"> <!-- pos="0.08 0.05 0.0"-->
+              <joint name="right_hip_pitch" pos="0 0 0" axis="1 0 0" range="-0.93 0.93"/>
+              <geom  pos="-0.005 0.0 0.0" type="mesh"  mesh="link2_m" class="collision"  euler="1.57079 0 0"/>
+              <geom  pos="-0.005 0.0 0.0" class="visual" mesh="link2_m"   euler="1.57079 0 0" /> 
+              <body name="right_knee_pitch_link" pos="-0.01 0.0 -0.27"> <!-- pos="0.07 0.05 -0.27" -->
+                <joint name="right_knee_pitch"  pos="0 0 0" axis="1 0 0" range="-0.93 0.93"/>
+                <geom  pos="0 0 0" type="mesh"  mesh="link3_m" class="collision"  euler="1.57079 0 0"/>
+                <geom  pos="0 0 0" class="visual" mesh="link3_m"   euler="1.57079 0 0" /> 
+                <body name="right_ankle_pitch_link" pos="0.012 0.0 -0.265"> <!-- pos="0.082 0.05 -0.535" -->
+                  <joint name="right_ankle_pitch"  pos="0 0 0" axis="1 0 0" range="-0.23 0.23"/>
+                  <geom  pos="0 0 0" type="mesh"  mesh="link4_m" class="collision"  euler="1.57079 0 0"/>
+                  <geom  pos="0 0 0" class="visual" mesh="link4_m"   euler="1.57079 0 0" />               
+                </body>            
+              </body>          
+            </body>
+          </body>
       </body>
     </body>
 
