@@ -15,13 +15,13 @@
         <mesh filename="../meshes/link00.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
-      <origin rpy="0 0 1.57079" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
     </visual>
     <collision>
       <geometry>
         <mesh filename="../meshes/link00.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <origin rpy="0 0 1.57079" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
     </collision>
   </link>
 
@@ -29,8 +29,8 @@
   <joint name="left_hip_roll" type="revolute">
     <parent link="base"/>
     <child link="left_hip_roll_link"/>
-    <origin xyz="-0.09 0 0" rpy="0 0 0"/>
-    <axis xyz="0 1 0"/>
+    <origin xyz="0 0.09 0" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
     <limit lower="-0.05" upper="0.05" effort="10" velocity="10"/>
   </joint>
   <link name="left_hip_roll_link">
@@ -39,21 +39,21 @@
         <mesh filename="../meshes/link1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
-      <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </visual>
     <collision>
       <geometry>
         <mesh filename="../meshes/link1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </collision>
   </link>
 
   <joint name="left_hip_pitch" type="revolute">
     <parent link="left_hip_roll_link"/>
     <child link="left_hip_pitch_link"/>
-    <origin xyz="0.01 0.05 0.0" rpy="0 0 0"/>
-    <axis xyz="1 0 0"/>
+    <origin xyz="0.05 -0.01 0.0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
     <limit lower="-0.93" upper="0.93" effort="10" velocity="10"/>
   </joint>
   <link name="left_hip_pitch_link">
@@ -62,21 +62,21 @@
         <mesh filename="../meshes/link2.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
-      <origin rpy="1.57079 0 0" xyz="0.005 0 0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 -0.005 0"/>
     </visual>
     <collision>
       <geometry>
         <mesh filename="../meshes/link2.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <origin rpy="1.57079 0 0" xyz="0.005 0 0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 -0.005 0"/>
     </collision>
   </link>
 
   <joint name="left_knee_pitch" type="revolute">
     <parent link="left_hip_pitch_link"/>
     <child link="left_knee_pitch_link"/>
-    <origin xyz="0.01 0.0 -0.27" rpy="0 0 0"/>
-    <axis xyz="1 0 0"/>
+    <origin xyz="0.0 -0.01 -0.27" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
     <limit lower="-0.93" upper="0.93" effort="10" velocity="10"/>
   </joint>
   <link name="left_knee_pitch_link">
@@ -85,21 +85,21 @@
         <mesh filename="../meshes/link3.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
-      <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </visual>
     <collision>
       <geometry>
         <mesh filename="../meshes/link3.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </collision>
   </link>
 
   <joint name="left_ankle_pitch" type="revolute">
     <parent link="left_knee_pitch_link"/>
     <child link="left_ankle_pitch_link"/>
-    <origin xyz="-0.012 0.0 -0.265" rpy="0 0 0"/>
-    <axis xyz="1 0 0"/>
+    <origin xyz="0.0 0.012 -0.265" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
     <limit lower="-0.23" upper="0.23" effort="10" velocity="10"/>
   </joint>
   <link name="left_ankle_pitch_link">
@@ -108,13 +108,13 @@
         <mesh filename="../meshes/link4.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
-      <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </visual>
     <collision>
       <geometry>
         <mesh filename="../meshes/link4.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </collision>
   </link>
 
@@ -122,8 +122,8 @@
   <joint name="right_hip_roll" type="revolute">
     <parent link="base"/>
     <child link="right_hip_roll_link"/>
-    <origin xyz="0.09 0 0" rpy="0 0 0"/>
-    <axis xyz="0 1 0"/>
+    <origin xyz="0 -0.09 0" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
     <limit lower="-0.05" upper="0.05" effort="10" velocity="10"/>
   </joint>
   <link name="right_hip_roll_link">
@@ -132,21 +132,21 @@
         <mesh filename="../meshes/link1_m.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
-      <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </visual>
     <collision>
       <geometry>
         <mesh filename="../meshes/link1_m.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </collision>
   </link>
 
   <joint name="right_hip_pitch" type="revolute">
     <parent link="right_hip_roll_link"/>
     <child link="right_hip_pitch_link"/>
-    <origin xyz="-0.01 0.05 0.0" rpy="0 0 0"/>
-    <axis xyz="1 0 0"/>
+    <origin xyz="0.05 0.01 0.0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
     <limit lower="-0.93" upper="0.93" effort="10" velocity="10"/>
   </joint>
   <link name="right_hip_pitch_link">
@@ -155,21 +155,21 @@
         <mesh filename="../meshes/link2_m.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
-      <origin rpy="1.57079 0 0" xyz="-0.005 0.0 0.0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0.0 0.005 0.0"/>
     </visual>
     <collision>
       <geometry>
         <mesh filename="../meshes/link2_m.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <origin rpy="1.57079 0 0" xyz="-0.005 0.0 0.0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0.0 0.005 0.0"/>
     </collision>
   </link>
 
   <joint name="right_knee_pitch" type="revolute">
     <parent link="right_hip_pitch_link"/>
     <child link="right_knee_pitch_link"/>
-    <origin xyz="-0.01 0.0 -0.27" rpy="0 0 0"/>
-    <axis xyz="1 0 0"/>
+    <origin xyz="0.0 0.01 -0.27" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
     <limit lower="-0.93" upper="0.93" effort="10" velocity="10"/>
   </joint>
   <link name="right_knee_pitch_link">
@@ -178,21 +178,21 @@
         <mesh filename="../meshes/link3_m.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
-      <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </visual>
     <collision>
       <geometry>
         <mesh filename="../meshes/link3_m.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </collision>
   </link>
 
   <joint name="right_ankle_pitch" type="revolute">
     <parent link="right_knee_pitch_link"/>
     <child link="right_ankle_pitch_link"/>
-    <origin xyz="0.012 0.0 -0.265" rpy="0 0 0"/>
-    <axis xyz="1 0 0"/>
+    <origin xyz="0.0 -0.012 -0.265" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
     <limit lower="-0.23" upper="0.23" effort="10" velocity="10"/>
   </joint>
   <link name="right_ankle_pitch_link">
@@ -201,13 +201,13 @@
         <mesh filename="../meshes/link4_m.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
-      <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </visual>
     <collision>
       <geometry>
         <mesh filename="../meshes/link4_m.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <origin rpy="1.57079 0 0" xyz="0 0 0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </collision>
   </link>
 </robot>
