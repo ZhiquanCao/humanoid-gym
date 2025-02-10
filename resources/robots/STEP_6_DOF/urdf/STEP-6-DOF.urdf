@@ -18,8 +18,11 @@
       <origin rpy="0 0 0" xyz="0 0 0"/>
     </visual>
     <collision>
-      <geometry>
+      <!-- <geometry>
         <mesh filename="../meshes/link00.stl" scale="0.001 0.001 0.001"/>
+      </geometry> -->
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0"/>
     </collision>
@@ -31,7 +34,7 @@
     <child link="left_hip_roll_link"/>
     <origin xyz="0 0.09 0" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
-    <limit lower="-0.05" upper="0.05" effort="10" velocity="10"/>
+    <limit lower="-0.15" upper="0.15" effort="10" velocity="10"/>
   </joint>
   <link name="left_hip_roll_link">
     <visual>
@@ -42,9 +45,9 @@
       <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </visual>
     <collision>
-      <geometry>
+      <!-- <geometry>
         <mesh filename="../meshes/link1.stl" scale="0.001 0.001 0.001"/>
-      </geometry>
+      </geometry> -->
       <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </collision>
   </link>
@@ -88,9 +91,9 @@
       <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </visual>
     <collision>
-      <geometry>
+      <!-- <geometry>
         <mesh filename="../meshes/link3.stl" scale="0.001 0.001 0.001"/>
-      </geometry>
+      </geometry> -->
       <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </collision>
   </link>
@@ -124,7 +127,7 @@
     <child link="right_hip_roll_link"/>
     <origin xyz="0 -0.09 0" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
-    <limit lower="-0.05" upper="0.05" effort="10" velocity="10"/>
+    <limit lower="-0.15" upper="0.15" effort="10" velocity="10"/>
   </joint>
   <link name="right_hip_roll_link">
     <visual>
@@ -135,9 +138,9 @@
       <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </visual>
     <collision>
-      <geometry>
+      <!-- <geometry>
         <mesh filename="../meshes/link1_m.stl" scale="0.001 0.001 0.001"/>
-      </geometry>
+      </geometry> -->
       <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </collision>
   </link>
@@ -181,9 +184,9 @@
       <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </visual>
     <collision>
-      <geometry>
+      <!-- <geometry>
         <mesh filename="../meshes/link3_m.stl" scale="0.001 0.001 0.001"/>
-      </geometry>
+      </geometry> -->
       <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </collision>
   </link>
