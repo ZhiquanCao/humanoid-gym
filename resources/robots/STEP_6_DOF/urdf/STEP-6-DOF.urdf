@@ -10,6 +10,20 @@
 
   <!-- Base Link -->
   <link name="base">
+    <inertial>
+      <origin
+        xyz="0.05 0.0 0.12"
+        rpy="0 0 0" />
+      <mass
+        value="0.5" />
+      <inertia
+        ixx="1E-05"
+        ixy="0"
+        ixz="0"
+        iyy="1E-05"
+        iyz="0"
+        izz="1E-05" />
+    </inertial>
     <visual>
       <geometry>
         <mesh filename="../meshes/link00.stl" scale="0.001 0.001 0.001"/>
@@ -28,6 +42,8 @@
     </collision>
   </link>
 
+
+
   <!-- Left Leg -->
   <joint name="left_hip_roll" type="revolute">
     <parent link="base"/>
@@ -37,6 +53,20 @@
     <limit lower="-0.15" upper="0.15" effort="10" velocity="10"/>
   </joint>
   <link name="left_hip_roll_link">
+    <inertial>
+      <origin
+        xyz="0.05 0.02 0.0"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="1E-05"
+        ixy="0"
+        ixz="0"
+        iyy="1E-05"
+        iyz="0"
+        izz="1E-05" />
+    </inertial>
     <visual>
       <geometry>
         <mesh filename="../meshes/link1.stl" scale="0.001 0.001 0.001"/>
@@ -60,6 +90,20 @@
     <limit lower="-0.93" upper="0.93" effort="10" velocity="10"/>
   </joint>
   <link name="left_hip_pitch_link">
+    <inertial>
+      <origin
+        xyz="0.0 0.0 -0.13"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="1E-05"
+        ixy="0"
+        ixz="0"
+        iyy="1E-05"
+        iyz="0"
+        izz="1E-05" />
+    </inertial>
     <visual>
       <geometry>
         <mesh filename="../meshes/link2.stl" scale="0.001 0.001 0.001"/>
@@ -83,6 +127,20 @@
     <limit lower="-0.93" upper="0.93" effort="10" velocity="10"/>
   </joint>
   <link name="left_knee_pitch_link">
+    <inertial>
+      <origin
+        xyz="0.0 0.0 -0.13"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="1E-05"
+        ixy="0"
+        ixz="0"
+        iyy="1E-05"
+        iyz="0"
+        izz="1E-05" />
+    </inertial>
     <visual>
       <geometry>
         <mesh filename="../meshes/link3.stl" scale="0.001 0.001 0.001"/>
@@ -106,6 +164,20 @@
     <limit lower="-0.23" upper="0.23" effort="10" velocity="10"/>
   </joint>
   <link name="left_ankle_pitch_link">
+    <inertial>
+      <origin
+        xyz="0.0 0.0 -0.01"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="1E-05"
+        ixy="0"
+        ixz="0"
+        iyy="1E-05"
+        iyz="0"
+        izz="1E-05" />
+    </inertial>
     <visual>
       <geometry>
         <mesh filename="../meshes/link4.stl" scale="0.001 0.001 0.001"/>
@@ -121,6 +193,8 @@
     </collision>
   </link>
 
+
+
   <!-- Right Leg -->
   <joint name="right_hip_roll" type="revolute">
     <parent link="base"/>
@@ -130,6 +204,20 @@
     <limit lower="-0.15" upper="0.15" effort="10" velocity="10"/>
   </joint>
   <link name="right_hip_roll_link">
+    <inertial>
+      <origin
+        xyz="0.05 0.02 0.0"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="1E-05"
+        ixy="0"
+        ixz="0"
+        iyy="1E-05"
+        iyz="0"
+        izz="1E-05" />
+    </inertial>
     <visual>
       <geometry>
         <mesh filename="../meshes/link1_m.stl" scale="0.001 0.001 0.001"/>
@@ -153,6 +241,20 @@
     <limit lower="-0.93" upper="0.93" effort="10" velocity="10"/>
   </joint>
   <link name="right_hip_pitch_link">
+    <inertial>
+      <origin
+        xyz="0.0 0.0 -0.13"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="1E-05"
+        ixy="0"
+        ixz="0"
+        iyy="1E-05"
+        iyz="0"
+        izz="1E-05" />
+    </inertial>
     <visual>
       <geometry>
         <mesh filename="../meshes/link2_m.stl" scale="0.001 0.001 0.001"/>
@@ -176,6 +278,20 @@
     <limit lower="-0.93" upper="0.93" effort="10" velocity="10"/>
   </joint>
   <link name="right_knee_pitch_link">
+    <inertial>
+      <origin
+        xyz="0.0 0.0 -0.13"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="1E-05"
+        ixy="0"
+        ixz="0"
+        iyy="1E-05"
+        iyz="0"
+        izz="1E-05" />
+    </inertial>
     <visual>
       <geometry>
         <mesh filename="../meshes/link3_m.stl" scale="0.001 0.001 0.001"/>
@@ -199,6 +315,20 @@
     <limit lower="-0.23" upper="0.23" effort="10" velocity="10"/>
   </joint>
   <link name="right_ankle_pitch_link">
+    <inertial>
+      <origin
+        xyz="0.0 0.0 -0.01"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="1E-05"
+        ixy="0"
+        ixz="0"
+        iyy="1E-05"
+        iyz="0"
+        izz="1E-05" />
+    </inertial>
     <visual>
       <geometry>
         <mesh filename="../meshes/link4_m.stl" scale="0.001 0.001 0.001"/>
