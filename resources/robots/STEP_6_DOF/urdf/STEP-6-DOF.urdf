@@ -11,29 +11,30 @@
   <!-- Base Link -->
   <link name="base">
     <inertial>
+      <!-- I move COM of base link by 0.05, 0, 0.10  -->
       <origin
-        xyz="0.05 0.0 0.12"
+        xyz="0.0436285  0.0005561  0.09610754"
         rpy="0 0 0" />
       <mass
         value="0.5" />
       <inertia
-        ixx="1E-05"
-        ixy="0"
-        ixz="0"
-        iyy="1E-05"
-        iyz="0"
-        izz="1E-05" />
+        ixx="4.20333841e-03"
+        ixy="1.37386879e-09"
+        ixz="1.67244526e-05"
+        iyy="2.89328030e-04"
+        iyz="-2.40004399e-06"
+        izz="4.06208104e-03" />
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="../meshes/link00.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/base_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
     </visual>
     <collision>
       <!-- <geometry>
-        <mesh filename="../meshes/link00.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/base_link.stl" scale="0.001 0.001 0.001"/>
       </geometry> -->
       <geometry>
         <box size="0.1 0.1 0.1"/>
@@ -55,30 +56,30 @@
   <link name="left_hip_roll_link">
     <inertial>
       <origin
-        xyz="0.05 0.02 0.0"
-        rpy="0 0 0" />
+        xyz="-0.03868579  0.00159075 -0.04885336"
+        rpy="1.57079 0 -1.57079" />
       <mass
-        value="0.1" />
+        value="0.24" />
       <inertia
-        ixx="1E-05"
-        ixy="0"
-        ixz="0"
-        iyy="1E-05"
-        iyz="0"
-        izz="1E-05" />
+        ixx="2.28033751e-04"
+        ixy="-9.20354717e-07"
+        ixz="-2.33631025e-05"
+        iyy="1.88145940e-04"
+        iyz="1.11008114e-06"
+        izz="1.33225705e-04" />
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="../meshes/link1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/left_hip_roll_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
       <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </visual>
     <collision>
-      <!-- <geometry>
-        <mesh filename="../meshes/link1.stl" scale="0.001 0.001 0.001"/>
-      </geometry> -->
-      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/left_hip_roll_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 0.01 0"/> <!-- move the collision a bit further away -->
     </collision>
   </link>
 
@@ -92,28 +93,28 @@
   <link name="left_hip_pitch_link">
     <inertial>
       <origin
-        xyz="0.0 0.0 -0.13"
-        rpy="0 0 0" />
+        xyz="-0.0191034  -0.21611717 -0.00042164"
+        rpy="1.57079 0 -1.57079" />
       <mass
-        value="0.2" />
+        value="0.3" />
       <inertia
-        ixx="1E-05"
-        ixy="0"
-        ixz="0"
-        iyy="1E-05"
-        iyz="0"
-        izz="1E-05" />
+        ixx="2.62793550e-03"
+        ixy="-4.85167365e-05"
+        ixz="1.68292717e-08"
+        iyy="1.34483761e-04"
+        iyz="-1.10964871e-06"
+        izz="2.56215448e-03" />
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="../meshes/link2.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/left_hip_pitch_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
       <origin rpy="1.57079 0 -1.57079" xyz="0 -0.005 0"/>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/link2.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/left_hip_pitch_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <origin rpy="1.57079 0 -1.57079" xyz="0 -0.005 0"/>
     </collision>
@@ -129,30 +130,30 @@
   <link name="left_knee_pitch_link">
     <inertial>
       <origin
-        xyz="0.0 0.0 -0.13"
-        rpy="0 0 0" />
+        xyz="-0.00233532 -0.12255005  0.00029014"
+        rpy="1.57079 0 -1.57079" />
       <mass
         value="0.2" />
       <inertia
-        ixx="1E-05"
-        ixy="0"
-        ixz="0"
-        iyy="1E-05"
-        iyz="0"
-        izz="1E-05" />
+        ixx="1.37492757e-03"
+        ixy="-1.43304953e-04"
+        ixz="6.48297081e-07"
+        iyy="6.92247219e-05"
+        iyz="6.82425772e-06"
+        izz="1.35694344e-03" />
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="../meshes/link3.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/left_knee_pitch_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
       <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </visual>
     <collision>
-      <!-- <geometry>
-        <mesh filename="../meshes/link3.stl" scale="0.001 0.001 0.001"/>
-      </geometry> -->
-      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/left_knee_pitch_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 -0.01 0.0"/> <!-- move the collision a bit further away -->
     </collision>
   </link>
 
@@ -166,30 +167,30 @@
   <link name="left_ankle_pitch_link">
     <inertial>
       <origin
-        xyz="0.0 0.0 -0.01"
-        rpy="0 0 0" />
+        xyz="0.00034041 -0.01856317  0.01106155"
+        rpy="1.57079 0 -1.57079" />
       <mass
-        value="0.1" />
+        value="0.16" />
       <inertia
-        ixx="1E-05"
-        ixy="0"
-        ixz="0"
-        iyy="1E-05"
-        iyz="0"
-        izz="1E-05" />
+        ixx="2.22546520e-04"
+        ixy="2.20974294e-07"
+        ixz="1.07593845e-07"
+        iyy="2.66507957e-04"
+        iyz="-3.23153397e-06"
+        izz="6.07491518e-05" />
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="../meshes/link4.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/left_ankle_pitch_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
       <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/link4.stl" scale="0.001 0.001 0.001"/>
+        <box size="0.07 0.01 0.12"/>
       </geometry>
-      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 0 -0.02"/>
     </collision>
   </link>
 
@@ -206,30 +207,30 @@
   <link name="right_hip_roll_link">
     <inertial>
       <origin
-        xyz="0.05 0.02 0.0"
-        rpy="0 0 0" />
+        xyz="0.03868376  0.00159075 -0.04885335"
+        rpy="1.57079 0 -1.57079" />
       <mass
-        value="0.1" />
+        value="0.24" />
       <inertia
-        ixx="1E-05"
-        ixy="0"
-        ixz="0"
-        iyy="1E-05"
-        iyz="0"
-        izz="1E-05" />
+        ixx="2.28033725e-04"
+        ixy="9.20351938e-07"
+        ixz="2.33631327e-05"
+        iyy="1.88145844e-04"
+        iyz="2.33631327e-05"
+        izz="1.33225579e-04" />
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="../meshes/link1_m.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/right_hip_roll_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
       <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </visual>
     <collision>
-      <!-- <geometry>
-        <mesh filename="../meshes/link1_m.stl" scale="0.001 0.001 0.001"/>
-      </geometry> -->
-      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/right_hip_roll_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 -0.01 0"/>
     </collision>
   </link>
 
@@ -243,28 +244,28 @@
   <link name="right_hip_pitch_link">
     <inertial>
       <origin
-        xyz="0.0 0.0 -0.13"
-        rpy="0 0 0" />
+        xyz="0.01910195 -0.2061182  -0.00042164"
+        rpy="1.57079 0 -1.57079" />
       <mass
-        value="0.2" />
+        value="0.3" />
       <inertia
-        ixx="1E-05"
-        ixy="0"
-        ixz="0"
-        iyy="1E-05"
-        iyz="0"
-        izz="1E-05" />
+        ixx="2.62795130e-03"
+        ixy="4.85202010e-05"
+        ixz="-1.70218432e-08"
+        iyy="1.34491211e-04"
+        iyz="-1.11020412e-06"
+        izz="2.56217527e-03" />
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="../meshes/link2_m.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/right_hip_pitch_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
       <origin rpy="1.57079 0 -1.57079" xyz="0.0 0.005 0.0"/>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="../meshes/link2_m.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/right_hip_pitch_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <origin rpy="1.57079 0 -1.57079" xyz="0.0 0.005 0.0"/>
     </collision>
@@ -280,30 +281,30 @@
   <link name="right_knee_pitch_link">
     <inertial>
       <origin
-        xyz="0.0 0.0 -0.13"
-        rpy="0 0 0" />
+        xyz="0.00233532 -0.12255005  0.00029014"
+        rpy="1.57079 0 -1.57079" />
       <mass
         value="0.2" />
       <inertia
-        ixx="1E-05"
-        ixy="0"
-        ixz="0"
-        iyy="1E-05"
-        iyz="0"
-        izz="1E-05" />
+        ixx="1.37492757e-03"
+        ixy="1.43304953e-04"
+        ixz="-6.48297081e-07"
+        iyy="6.92247219e-05"
+        iyz="6.82425772e-06"
+        izz="1.35694344e-03" />
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="../meshes/link3_m.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/right_knee_pitch_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
       <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </visual>
     <collision>
-      <!-- <geometry>
-        <mesh filename="../meshes/link3_m.stl" scale="0.001 0.001 0.001"/>
-      </geometry> -->
-      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/right_knee_pitch_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 0.01 0"/>
     </collision>
   </link>
 
@@ -317,30 +318,33 @@
   <link name="right_ankle_pitch_link">
     <inertial>
       <origin
-        xyz="0.0 0.0 -0.01"
-        rpy="0 0 0" />
+        xyz="-0.00034041 -0.01856317  0.01106155"
+        rpy="1.57079 0 -1.57079" />
       <mass
-        value="0.1" />
+        value="0.16" />
       <inertia
-        ixx="1E-05"
-        ixy="0"
-        ixz="0"
-        iyy="1E-05"
-        iyz="0"
-        izz="1E-05" />
+        ixx="2.22546520e-04"
+        ixy="-2.20974294e-07"
+        ixz="-1.07593845e-07"
+        iyy="2.66507957e-04"
+        iyz="-3.23153397e-06"
+        izz="6.07491518e-05" />
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="../meshes/link4_m.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/right_ankle_pitch_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="black"/>
       <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
     </visual>
     <collision>
+      <!-- <geometry>
+        <mesh filename="../meshes/right_ankle_pitch_link" scale="0.001 0.001 0.001"/>
+      </geometry> -->
       <geometry>
-        <mesh filename="../meshes/link4_m.stl" scale="0.001 0.001 0.001"/>
+        <box size="0.07 0.01 0.12"/>
       </geometry>
-      <origin rpy="1.57079 0 -1.57079" xyz="0 0 0"/>
+      <origin rpy="1.57079 0 -1.57079" xyz="0 0 -0.02"/>
     </collision>
   </link>
 </robot>
