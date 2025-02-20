@@ -31,9 +31,9 @@
 from humanoid.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobotCfgPPO
 
 
-class Step6DofCfg(LeggedRobotCfg):
+class Step8DofCfg(LeggedRobotCfg):
     """
-    Configuration class for the Step6Dof humanoid robot.
+    Configuration class for the Step8Dof humanoid robot.
     """
     class env(LeggedRobotCfg.env):
         # change the observation dim
@@ -55,14 +55,14 @@ class Step6DofCfg(LeggedRobotCfg):
         torque_limit = 0.85
 
     class asset(LeggedRobotCfg.asset):
-        file = '{LEGGED_GYM_ROOT_DIR}/resources/robots/STEP_6_DOF/urdf/STEP-6-DOF.urdf'
+        file = '{LEGGED_GYM_ROOT_DIR}/resources/robots/STEP_8_DOF/urdf/STEP-8-DOF.urdf'
 
-        name = "STEP-6-DOF"
-        foot_name = "ankle_pitch" # I use pitch instead of roll joints
-        knee_name = "knee"
+        name = "STEP-8-DOF"
+        foot_name = "foot"
+        knee_name = "shin" # I use shin instead of knee as shin is the top link as the child of knee joint
 
-        terminate_after_contacts_on = ['base_link']
-        penalize_contacts_on = ["base_link"]
+        terminate_after_contacts_on = ['base']
+        penalize_contacts_on = ["base"]
         self_collisions = 0  # 1 to disable, 0 to enable...bitwise filter
         flip_visual_attachments = False
         replace_cylinder_with_capsule = False
@@ -101,14 +101,14 @@ class Step6DofCfg(LeggedRobotCfg):
         pos = [0.0, 0.0, 0.95]
 
         default_joint_angles = {  # = target angles [rad] when action = 0.0
-            'left_hip_roll': 0.,
-            'left_hip_pitch': 0.,
-            'left_knee_pitch': 0.,
-            'left_ankle_pitch': 0.,
-            'right_hip_roll': 0.,
-            'right_hip_pitch': 0.,
-            'right_knee_pitch': 0.,
-            'right_ankle_pitch': 0.,
+            'left_hip_roll_joint': 0.,
+            'left_hip_pitch_joint': 0.,
+            'left_knee_joint': 0.,
+            'left_ankle_joint': 0.,
+            'right_hip_roll_joint': 0.,
+            'right_hip_pitch_joint': 0.,
+            'right_knee_joint': 0.,
+            'right_ankle_joint': 0.,
         }
 
 
@@ -122,9 +122,9 @@ class Step6DofCfg(LeggedRobotCfg):
         #            10, 'knee': 10, 'ankle': 10}
         
         stiffness = {'hip_roll': 200.0, 'hip_pitch': 350.0,
-                     'knee_pitch': 350.0, 'ankle_pitch': 15}
+                     'knee': 350.0, 'ankle': 15}
         damping = {'hip_roll': 10, 'hip_pitch': 10,
-                   'knee_pitch': 10, 'ankle_pitch': 10}
+                   'knee': 10, 'ankle': 10}
 
         # action scale: target angle = actionScale * action + defaultAngle
         action_scale = 0.25
@@ -231,7 +231,7 @@ class Step6DofCfg(LeggedRobotCfg):
         clip_actions = 18.
 
 
-class Step6DofCfgPPO(LeggedRobotCfgPPO):
+class Step8DofCfgPPO(LeggedRobotCfgPPO):
     seed = 5
     runner_class_name = 'OnPolicyRunner'   # DWLOnPolicyRunner
 

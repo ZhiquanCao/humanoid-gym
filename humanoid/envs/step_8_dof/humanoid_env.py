@@ -39,9 +39,9 @@ from humanoid.envs import LeggedRobot
 from humanoid.utils.terrain import  HumanoidTerrain
 
 
-class Step6DofFreeEnv(LeggedRobot):
+class Step8DofFreeEnv(LeggedRobot):
     '''
-    Step6DofFreeEnv is a class that represents a custom environment for a legged robot.
+    Step8DofFreeEnv is a class that represents a custom environment for a legged robot.
 
     Args:
         cfg (LeggedRobotCfg): Configuration object for the legged robot.
@@ -239,6 +239,20 @@ class Step6DofFreeEnv(LeggedRobot):
             contact_mask,  # 2
         ), dim=-1)
 
+# Print intermediate values to check for NaNs
+        print("command_input:", self.command_input)
+        print("dof_pos:", self.dof_pos)
+        print("dof_vel:", self.dof_vel)
+        print("actions:", self.actions)
+        print("base_lin_vel:", self.base_lin_vel)
+        print("base_ang_vel:", self.base_ang_vel)
+        print("base_euler_xyz:", self.base_euler_xyz)
+        print("rand_push_force:", self.rand_push_force)
+        print("rand_push_torque:", self.rand_push_torque)
+        print("env_frictions:", self.env_frictions)
+        print("body_mass:", self.body_mass)
+        print("stance_mask:", stance_mask)
+        print("contact_mask:", contact_mask)
 
         obs_buf = torch.cat((
             self.command_input,  # 5 = 2D(sin cos) + 3D(vel_x, vel_y, aug_vel_yaw)
@@ -249,10 +263,16 @@ class Step6DofFreeEnv(LeggedRobot):
             self.base_euler_xyz * self.obs_scales.quat,  # 3
         ), dim=-1)
 
+        print("Checking whether obs_buf contains NaN values: ", torch.isnan(obs_buf).any())
+        print("displaying obs_buf: ", obs_buf)
+        print("size of obs_buf: ", obs_buf.size())
+        nan_counts = [torch.isnan(row).sum().item() for row in obs_buf]
+        print("Count of NaNs per row:", nan_counts)
         if self.cfg.terrain.measure_heights:
             heights = torch.clip(self.root_states[:, 2].unsqueeze(1) - 0.5 - self.measured_heights, -1, 1.) * self.obs_scales.height_measurements
             self.privileged_obs_buf = torch.cat((self.obs_buf, heights), dim=-1)
         
+        self.add_noise = False # try 
         if self.add_noise:  
             obs_now = obs_buf.clone() + torch.randn_like(obs_buf) * self.noise_scale_vec * self.cfg.noise.noise_level
         else:
@@ -266,6 +286,21 @@ class Step6DofFreeEnv(LeggedRobot):
 
         self.obs_buf = obs_buf_all.reshape(self.num_envs, -1)  # N, T*K
         self.privileged_obs_buf = torch.cat([self.critic_history[i] for i in range(self.cfg.env.c_frame_stack)], dim=1)
+
+# After computing each vector, add a check for the last environment row.
+        last_idx = -1
+        if torch.isnan(self.command_input[last_idx]).any():
+            print("NaN detected in command_input at last env, value:", self.command_input[last_idx])
+        if torch.isnan(self.dof_pos[last_idx]).any():
+            print("NaN detected in dof_pos at last env, value:", self.dof_pos[last_idx])
+        if torch.isnan(self.dof_vel[last_idx]).any():
+            print("NaN detected in dof_vel at last env, value:", self.dof_vel[last_idx])
+        if torch.isnan(self.base_lin_vel[last_idx]).any():
+            print("NaN detected in base_lin_vel at last env, value:", self.base_lin_vel[last_idx])
+        if torch.isnan(self.base_ang_vel[last_idx]).any():
+            print("NaN detected in base_ang_vel at last env, value:", self.base_ang_vel[last_idx])
+        if torch.isnan(self.base_euler_xyz[last_idx]).any():
+            print("NaN detected in base_euler_xyz at last env, value:", self.base_euler_xyz[last_idx])
 
     def reset_idx(self, env_ids):
         super().reset_idx(env_ids)
@@ -384,9 +419,19 @@ class Step6DofFreeEnv(LeggedRobot):
         of its feet when they are in contact with the ground.
         """
         stance_mask = self._get_gait_phase()
+
+        # Debug prints
+        print("self.rigid_state shape:", self.rigid_state.shape)
+        print("self.feet_indices:", self.feet_indices)
+        print("stance_mask shape:", stance_mask.shape)
+        print("stance_mask:", stance_mask)
+        
+        # For each foot, only at stance phase do we measure the height
         measured_heights = torch.sum(
             self.rigid_state[:, self.feet_indices, 2] * stance_mask, dim=1) / torch.sum(stance_mask, dim=1)
+        print("measured_heights shape:", measured_heights.shape)
         base_height = self.root_states[:, 2] - (measured_heights - 0.05)
+        print("base_height shape:", base_height.shape)
         return torch.exp(-torch.abs(base_height - self.cfg.rewards.base_height_target) * 100)
 
     def _reward_base_acc(self):
