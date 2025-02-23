@@ -36,11 +36,11 @@ from .base.legged_robot import LeggedRobot
 from .custom.humanoid_config import XBotLCfg, XBotLCfgPPO
 from .custom.humanoid_env import XBotLFreeEnv
 
-from .step_6_dof.humanoid_config import Step6DofCfg, Step6DofCfgPPO
-from .step_6_dof.humanoid_env import Step6DofFreeEnv
+from .step_8_dof.humanoid_config import Step8DofCfg, Step8DofCfgPPO
+from .step_8_dof.humanoid_env import Step8DofFreeEnv
 
 from humanoid.utils.task_registry import task_registry
 
 
 task_registry.register( "humanoid_ppo", XBotLFreeEnv, XBotLCfg(), XBotLCfgPPO() )
-task_registry.register( "step_ppo", Step6DofFreeEnv, Step6DofCfg(), Step6DofCfgPPO() )
+task_registry.register( "step_ppo", Step8DofFreeEnv, Step8DofCfg(), Step8DofCfgPPO() )

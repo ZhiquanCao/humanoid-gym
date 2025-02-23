@@ -152,13 +152,13 @@ class Step8DofCfg(LeggedRobotCfg):
 
     class domain_rand:
         randomize_friction = True
-        friction_range = [0.1, 2.0]
+        friction_range = [0.5, 1.2]
         randomize_base_mass = True
-        added_mass_range = [-5., 5.]
+        added_mass_range = [-0.5, 0.5] # Can't be too large
         push_robots = True
-        push_interval_s = 4
-        max_push_vel_xy = 0.2
-        max_push_ang_vel = 0.4
+        push_interval_s = 10
+        max_push_vel_xy = 0.1
+        max_push_ang_vel = 0.2
         # dynamic randomization
         action_delay = 0.5
         action_noise = 0.02
