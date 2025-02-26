@@ -39,8 +39,12 @@ from .custom.humanoid_env import XBotLFreeEnv
 from .step_8_dof.humanoid_config import Step8DofCfg, Step8DofCfgPPO
 from .step_8_dof.humanoid_env import Step8DofFreeEnv
 
+from .step_10_dof.humanoid_config import Step10DofCfg, Step10DofCfgPPO
+from .step_10_dof.humanoid_env import Step10DofFreeEnv
+
 from humanoid.utils.task_registry import task_registry
 
 
 task_registry.register( "humanoid_ppo", XBotLFreeEnv, XBotLCfg(), XBotLCfgPPO() )
-task_registry.register( "step_ppo", Step8DofFreeEnv, Step8DofCfg(), Step8DofCfgPPO() )
+task_registry.register( "step_8_dof_ppo", Step8DofFreeEnv, Step8DofCfg(), Step8DofCfgPPO() )
+task_registry.register( "step_10_dof_ppo", Step10DofFreeEnv, Step10DofCfg(), Step10DofCfgPPO() )
