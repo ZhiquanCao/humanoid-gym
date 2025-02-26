@@ -71,23 +71,24 @@ class Step8DofCfg(LeggedRobotCfg):
     class terrain(LeggedRobotCfg.terrain):
         mesh_type = 'plane'
         # mesh_type = 'trimesh'
-        curriculum = False
+        vertical_scale = 0.002 # it was 0.005
+        curriculum = True # if true, the terrain starts from easy terrain
         # rough terrain only:
         measure_heights = False
-        static_friction = 0.6
-        dynamic_friction = 0.6
+        static_friction = 1.0 # Increase from 0.6j
+        dynamic_friction = 1.0
         terrain_length = 8.
         terrain_width = 8.
         num_rows = 20  # number of terrain rows (levels)
         num_cols = 20  # number of terrain cols (types)
-        max_init_terrain_level = 10  # starting curriculum state
+        max_init_terrain_level = 4  # starting curriculum state
         # plane; obstacles; uniform; slope_up; slope_down, stair_up, stair_down
         terrain_proportions = [0.2, 0.2, 0.4, 0.1, 0.1, 0, 0]
         restitution = 0.
 
     class noise:
         add_noise = True
-        noise_level = 0.6    # scales other values
+        noise_level = 0.4    # scales other values # it was 0.6
 
         class noise_scales:
             dof_pos = 0.05
@@ -98,7 +99,7 @@ class Step8DofCfg(LeggedRobotCfg):
             height_measurements = 0.1
 
     class init_state(LeggedRobotCfg.init_state):
-        pos = [0.0, 0.0, 0.95]
+        pos = [0.0, 0.0, 0.63] #P robot is lower than XBotL
 
         default_joint_angles = {  # = target angles [rad] when action = 0.0
             'left_hip_roll_joint': 0.,
@@ -121,13 +122,15 @@ class Step8DofCfg(LeggedRobotCfg):
         # damping = {'leg_roll': 10, 'leg_pitch': 10, 'leg_yaw':
         #            10, 'knee': 10, 'ankle': 10}
         
-        stiffness = {'hip_roll': 200.0, 'hip_pitch': 350.0,
-                     'knee': 350.0, 'ankle': 15}
+        # Testing lowering the stiffness; "shin" is knee
+        stiffness = {'hip_roll': 20.0, 'hip_pitch': 35.0,
+                     'knee': 35.0, 'ankle': 15} 
         damping = {'hip_roll': 10, 'hip_pitch': 10,
                    'knee': 10, 'ankle': 10}
 
         # action scale: target angle = actionScale * action + defaultAngle
-        action_scale = 0.25
+        # Try increasing the action scale from 0.25 to 0.5
+        action_scale = 0.5
         # decimation: Number of control action updates @ sim DT per policy DT
         decimation = 10  # 100hz
 
@@ -157,8 +160,8 @@ class Step8DofCfg(LeggedRobotCfg):
         added_mass_range = [-0.5, 0.5] # Can't be too large
         push_robots = True
         push_interval_s = 10
-        max_push_vel_xy = 0.1
-        max_push_ang_vel = 0.2
+        max_push_vel_xy = 0.05 # it was 0.1
+        max_push_ang_vel = 0.1 # it was 0.2
         # dynamic randomization
         action_delay = 0.5
         action_noise = 0.02
@@ -176,18 +179,18 @@ class Step8DofCfg(LeggedRobotCfg):
             heading = [-3.14, 3.14]
 
     class rewards:
-        base_height_target = 0.89
+        base_height_target = 0.58
         min_dist = 0.2
         max_dist = 0.5
         # put some settings here for LLM parameter tuning
-        target_joint_pos_scale = 0.17    # rad
-        target_feet_height = 0.06        # m
-        cycle_time = 0.64                # sec
+        target_joint_pos_scale = 0.17    # rad # it was 0.17
+        target_feet_height = 0.04        # m # it was 0.04
+        cycle_time = 0.54                # sec # it was 0.64
         # if true negative total rewards are clipped at zero (avoids early termination problems)
         only_positive_rewards = True
         # tracking reward = exp(error*sigma)
         tracking_sigma = 5
-        max_contact_force = 700  # Forces above this value are penalized
+        max_contact_force = 300  # Forces above this value are penalized # it was 700
 
         class scales:
             # reference motion tracking
@@ -197,10 +200,10 @@ class Step8DofCfg(LeggedRobotCfg):
             # gait
             feet_air_time = 1.
             foot_slip = -0.05
-            feet_distance = 0.2
-            knee_distance = 0.2
+            feet_distance = 0.16 # I don't see the reference of this parameter
+            knee_distance = 0.16
             # contact
-            feet_contact_forces = -0.01
+            feet_contact_forces = -0.02
             # vel tracking
             tracking_lin_vel = 1.2
             tracking_ang_vel = 1.1
@@ -256,7 +259,7 @@ class Step8DofCfgPPO(LeggedRobotCfgPPO):
 
         # logging
         save_interval = 100  # Please check for potential savings every `save_interval` iterations.
-        experiment_name = 'STEP_ppo'
+        experiment_name = 'STEP_8_DOF_ppo'
         run_name = ''
         # Load and resume
         resume = False
