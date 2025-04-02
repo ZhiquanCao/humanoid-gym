@@ -1,4 +1,4 @@
-# <a href="https://sites.google.com/view/humanoid-gym/">Humanoid-Gym: Reinforcement Learning for Humanoid Robot with Zero-Shot Sim2Real Transfer</a>
+# <a href="https://sites.google.com/view/humanoid-gym/">Humanoid-Gym: Reinforcement Learning for Humanoid Robot with Zero-Shot Sim2Real Transfer [STEP Version]</a>
 
 <a href="https://sites.google.com/view/humanoid-gym/"><strong>Project Page</strong></a>
   |
@@ -84,20 +84,20 @@ Denoising World Model Learning(DWL) presents an advanced sim-to-real framework t
 # Under the directory humanoid-gym/humanoid
 # Launching PPO Policy Training for 'v1' Across 4096 Environments
 # This command initiates the PPO algorithm-based training for the humanoid task.
-python scripts/train.py --task=humanoid_ppo --run_name v1 --headless --num_envs 4096
+python scripts/train.py --task=step_10_dof_ppo --run_name v1 --headless --num_envs 4096
 
 # Evaluating the Trained PPO Policy 'v1'
 # This command loads the 'v1' policy for performance assessment in its environment. 
 # Additionally, it automatically exports a JIT model, suitable for deployment purposes.
-python scripts/play.py --task=humanoid_ppo --run_name v1
+python scripts/play.py --task=step_10_dof_ppo --run_name v1
 
 # Implementing Simulation-to-Simulation Model Transformation
 # This command facilitates a sim-to-sim transformation using exported 'v1' policy.
 # You have to run play.py first to get the JIT model and use it with sim2sim.py
-python scripts/sim2sim.py --load_model /path/to/logs/XBot_ppo/exported/policies/policy_1.pt
+python scripts/sim2sim.py --load_model /path/to/logs/STEP_10_DOF_ppo/exported/policies/policy_1.pt
 
 # Run our trained policy
-python scripts/sim2sim.py --load_model /path/to/logs/XBot_ppo/exported/policies/policy_example.pt
+python scripts/sim2sim.py --load_model /path/to/logs/STEP_10_DOF_ppo/exported/policies/policy_example.pt
 
 ```
 
