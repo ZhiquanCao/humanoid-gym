@@ -282,7 +282,7 @@ class Step10DofFreeEnv(LeggedRobot):
         joint_pos = self.dof_pos.clone()
         pos_target = self.ref_dof_pos.clone()
         diff = joint_pos - pos_target
-        r = torch.exp(-2 * torch.norm(diff, dim=1)) - 0.2 * torch.norm(diff, dim=1).clamp(0, 0.5)
+        r = torch.exp(-5 * torch.norm(diff, dim=1)) - 0.5 * torch.norm(diff, dim=1).clamp(0, 0.5) #changed 2->5
         return r
 
     def _reward_feet_distance(self):
@@ -356,7 +356,7 @@ class Step10DofFreeEnv(LeggedRobot):
         """
         quat_mismatch = torch.exp(-torch.sum(torch.abs(self.base_euler_xyz[:, :2]), dim=1) * 10)
         orientation = torch.exp(-torch.norm(self.projected_gravity[:, :2], dim=1) * 20)
-        return (quat_mismatch + orientation) / 2.
+        return (quat_mismatch + orientation) / 1. #Changed 2->1
 
     def _reward_feet_contact_forces(self):
         """
